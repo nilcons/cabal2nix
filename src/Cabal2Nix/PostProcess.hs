@@ -85,6 +85,7 @@ postProcess deriv@(MkDerivation {..})
   | pname == "threadscope"      = deriv { configureFlags = "--ghc-options=-rtsopts":configureFlags }
   | pname == "tz"               = deriv { extraFunctionArgs = ["pkgs_tzdata"], phaseOverrides = "preConfigure = \"export TZDIR=${pkgs_tzdata}/share/zoneinfo\";" }
   | pname == "unix-time"        = deriv { phaseOverrides = unixTimeConfigureFlags }
+  | pname == "Unixutils"        = deriv { extraLibs = delete "crypt" extraLibs }
   | pname == "vacuum"           = deriv { extraLibs = "ghcPaths":extraLibs }
   | pname == "wxc"              = deriv { extraLibs = "wxGTK":"mesa":"libX11":extraLibs, phaseOverrides = wxcPostInstall }
   | pname == "wxcore"           = deriv { extraLibs = "wxGTK":"mesa":"libX11":extraLibs }
