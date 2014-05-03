@@ -2,7 +2,7 @@
 
 { cabal2nixSrc ? { outPath = ./.; revCount = 0; gitTag = "dirty"; }
 , supportedPlatforms ? [ "x86_64-linux" ]
-, supportedCompilers ? ["ghc6123" "ghc704" "ghc722" "ghc742" "ghc763" "ghc782" "ghcHEAD"]
+, supportedCompilers ? [ "ghc782" ]
 }:
 
 let
@@ -22,7 +22,7 @@ in
       version = cabal2nixSrc.gitTag;
       isLibrary = false;
       isExecutable = true;
-      buildDepends = with haskellPackages; [ Cabal filepath hackageDb HTTP mtl regexPosix ];
+      buildDepends = with haskellPackages; [ Cabal filepath hackageDb HTTP mtl regexPosix IfElse optparseApplicative ];
       testDepends = with haskellPackages; [ doctest ];
       doCheck = self.stdenv.lib.versionOlder "7.6" self.ghc.version;
       meta = {
