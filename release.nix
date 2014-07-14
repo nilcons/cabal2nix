@@ -2,7 +2,7 @@
 
 { cabal2nixSrc ? { outPath = ./.; revCount = 0; gitTag = "dirty"; }
 , supportedPlatforms ? [ "x86_64-linux" ]
-, supportedCompilers ? [ "ghc782" ]
+, supportedCompilers ? [ "ghc783" ]
 }:
 
 let
